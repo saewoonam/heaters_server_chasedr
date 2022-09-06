@@ -10,6 +10,7 @@ console.log('serial port: ', port)
 const get_dict = {
     'current':"I?",
     'monitor':"mon?",
+    'enabled':"EN?"
 };
 
 app
@@ -56,6 +57,21 @@ app
         ch = req.params['ch'];
         let cmd = 'I '+ ch + ' '+ req.query["i"] + '\n';
         console.log(`set current ${req.query["i"]}`);
+        response = await hph.write(port, cmd)
+        // console.log(response);
+    } else {
+        response = "no i to set";
+        }
+    res.end(JSON.stringify(response))
+    // res.end(`${response}`);
+  })
+  .get('/hph/:ch/set/enabled', async(req, res) => {
+    // console.log('query', JSON.stringify(req.query));
+    // console.log("i" in req.query);
+    if ("value" in req.query) {
+        ch = req.params['ch'];
+        let cmd = 'EN '+ ch + ' '+ req.query["value"] + '\n';
+        console.log(`enable ${ch} ${req.query["value"]}`);
         response = await hph.write(port, cmd)
         // console.log(response);
     } else {
