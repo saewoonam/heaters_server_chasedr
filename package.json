@@ -5,5 +5,12 @@
     "@serialport/bindings-cpp": "^10.7.0",
     "cors": "^2.8.5",
     "polka": "^0.5.2"
+  },
+  "scripts": {
+    "dev": "SERIAL='/dev/tty.usbmodem1401' nodemon --watch ./src ./src/index.js",
+    "start": "SERIAL='/dev/tty.usbmodem1401' node ./src/index.js"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.19"
   }
 }

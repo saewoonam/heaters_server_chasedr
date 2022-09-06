@@ -4,7 +4,9 @@ const cors = require('cors')({origin:true});
 
 const app = polka()
 // const port = '/dev/tty.usbmodem21101';
-const port = '/dev/tty.usbmodem1401';
+// const port = '/dev/tty.usbmodem1401';
+const port = process.env.SERIAL //|| '/dev/tty.usbmodem1401'
+console.log('serial port: ', port)
 const get_dict = {
     'current':"I?",
     'monitor':"mon?",
@@ -85,7 +87,8 @@ app
         res.end(JSON.stringify(current));
     })
 
-app.listen(3000, () => {
-    console.log(`> Running on localhost:3000`);
+let server_port = process.env.PORT || 3200
+app.listen(server_port, () => {
+    console.log(`> Running on localhost:${server_port}`);
   });
 
