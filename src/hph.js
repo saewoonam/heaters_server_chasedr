@@ -44,10 +44,11 @@ async function readline(port ) {
 async function open(port_path) {
     let port;
     try {
-        port = await Bindings.open({path:port_path, baudRate:9600});
+        port = await Bindings.open({path:port_path, baudRate:9600, lock:false});
     } catch (e) {
-        console.error(e);
+        // console.error(e);
         // console.log('error', e.toString(), typeof(e));
+        if (port !== undefined) await port.close();
         response = e.toString();
         return response
     } finally {
@@ -64,7 +65,7 @@ async function query(port_path, query_string) {
     let port = await open(port_path);
     if (typeof(port)=='string') {
         // console.log('failed to open port');
-        return port
+        return {'error':port}
     }
     /*
     try {

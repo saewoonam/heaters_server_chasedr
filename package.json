@@ -1,16 +1,17 @@
 {
-  "name": "heaters",
-  "packageManager": "yarn@3.2.1",
+  "name": "heaters_server_v2",
+  "packageManager": "yarn@3.2.0",
   "dependencies": {
-    "@serialport/bindings-cpp": "^10.7.0",
-    "cors": "^2.8.5",
-    "polka": "^0.5.2"
+    "@fastify/cors": "^8.2.1",
+    "@serialport/bindings-cpp": "^10.8.0",
+    "fastify": "^4.14.1"
   },
   "scripts": {
-    "dev": "SERIAL='/dev/tty.usbmodem1401' nodemon --watch ./src ./src/index.js",
-    "start": "SERIAL='/dev/tty.usbmodem1401' node ./src/index.js"
+    "dev": "SERIAL='/dev/heaters' nodemon --watch ./src ./src/index.js",
+    "start": "SERIAL='/dev/heaters' node ./src/index.js",
+    "start_old": "SERIAL='/dev/tty.usbmodem1401' node ./src/index.js"
   },
   "devDependencies": {
-    "nodemon": "^2.0.19"
+    "nodemon": "^2.0.21"
   }
 }
