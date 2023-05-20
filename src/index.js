@@ -20,7 +20,8 @@ setcors()
 
 // const port = '/dev/tty.usbmodem21101';
 // const port = '/dev/tty.usbmodem1401';
-const port = process.env.SERIAL //|| '/dev/tty.usbmodem1401'
+// const port = process.env.SERIAL //|| '/dev/tty.usbmodem1401'
+const port = '/dev/heaters'
 console.log('serial port: ', port)
 const get_dict = {
     'current':"I?",

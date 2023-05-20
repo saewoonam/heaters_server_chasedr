@@ -7,8 +7,8 @@
     "fastify": "^4.14.1"
   },
   "scripts": {
-    "dev": "SERIAL='/dev/heaters' nodemon --watch ./src ./src/index.js",
-    "start": "SERIAL='/dev/heaters' node ./src/index.js",
+    "dev": "nodemon --watch ./src ./src/index.js",
+    "start": "node ./src/index.js",
     "start_old": "SERIAL='/dev/tty.usbmodem1401' node ./src/index.js"
   },
   "devDependencies": {
